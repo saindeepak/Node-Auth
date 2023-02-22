@@ -1,4 +1,4 @@
-#Blog's monolith app where main goal is to get a deep understanding of how authentication and authorization works.
+# Blog's monolith app where main goal is to get a deep understanding of how authentication and authorization works.
 
 # Used JWT(Json Web Tokens) to authorize the user.
 For authentication, credential verification is done by validating the hashed credentials.
