@@ -1,44 +1,16 @@
-# Node-Auth
-Authentication with jwt
+Blog's monolith app where main goal is to get a deep understanding of how authentication and authorization works.
 
-----------------------
-To create a video streaming backend like YouTube that has the option to select multiple qualities in Node.js,
-you will need to use a combination of technologies. Here are the basic steps you would need to take:
+# Used JWT(Json Web Tokens) to authorize the user.
+# For authentication, credential verification is done by validating the hashed credentials.
+# Credentials are hashed using bcryptjs and stored in mongodb database.
+# And the authorized by assigning jwt token using jsonwebtoken library and then stored in Cookies
 
-// Ist path
-> Use a Node.js web framework such as Express to handle the server-side logic of your application.
-> Use a video transcoding library like ffmpeg to convert your videos into different qualities and formats.
-> Use a package like multer to handle file uploads to your server.
-> Use a package like hls-server to stream videos to clients using the HLS protocol.
-> Use a package like dash-js to stream videos to clients using the DASH protocol
-> Use a database like MongoDB to store information about the videos, such as their title, description, and file path.
-> Use a front-end framework like React or Angular to create the user interface for your application.
-> Use web-socket to stream the video on realtime
+// Flow
+> When user lands first time on home page, there is no valid jwt token that exist so he can't go to blogs route
+> User can go to login/signup route & 
+  -> If new user, then a new jwt token gets assigned to it and gets stored into the Cookie
+  -> If user already exist, it first gets authenticated and after that a valid jwt got assigned to it
 
-
-// IInd path
-> Use a Node.js web framework such as Express to handle the server-side logic of your application.
-> Use a cloud-based video transcoding service like AWS Elastic Transcoder to convert your videos into different qualities and formats.
-> Use a cloud-based storage service like AWS S3 to store your videos.
-> Use a package like stream to handle video streaming in node.js
-> Use a package like hls-server to stream videos to clients using the HLS protocol.
-> Use a package like dash-js to stream videos to clients using the DASH protocol
-> Use a database like MongoDB to store information about the videos, such as their title, description, and file path.
-> Use a front-end framework like React or Angular to create the user interface for your application.
-> Use web-socket to stream the video on realtime
-
-
-// IIIrd path
-> Use a cloud-based video transcoding service like Zencoder or Mux to convert your videos into different qualities and formats.
-> Use a cloud-based storage service like Google Cloud Storage or Amazon S3 to store your videos.
-> Use a package like nginx-rtmp-module to handle video streaming on the server side.
-> Use a package like hls.js to stream videos to clients using the HLS protocol.
-> Use a package like shaka-player to stream videos to clients using the DASH protocol
-> Use a database like MySQL or PostgreSQL to store information about the videos, such as their title, description, and file path.
-> Use a front-end framework like React or Angular to create the user interface for your application.
-> Use web-socket to stream the video on realtime
-
-
-
-
-
+* Routes are protected using middlewares
+* And user can't go back from blogs route to login/signup route after logging in from browser back button.
+* By disabling the bf-cache we can achieve it.
